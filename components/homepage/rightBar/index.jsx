@@ -68,7 +68,7 @@ const RightBar = () => {
               <h5>2023</h5>
               <ul className="collection-list-style">
                 {collection.map((item, index) => (
-                  <li key={index}><span className="line-clamp-1 opacity-30">{item}</span></li>
+                  <li key={index} className="opacity-30"><span className="line-clamp-1">{item}</span></li>
                 ))}
               </ul>
             </div>
