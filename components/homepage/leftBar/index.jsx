@@ -19,12 +19,12 @@ const LeftBar = () => {
       </div>
 
       <div>
-        <p className="text-xs">
+        <p className="text-xs leading-[18px]">
           Keiko Fukuyama <br />
-          Southern islands, 2000
+         <span className="italic">Southern islands,</span> 2000
         </p>
-        <p className="my-4">Commissioned by Jeremy Cai. <br /> 2024.01</p>
-        <p className="text-xs">
+        <p className="my-4 leading-[15px]">Commissioned by Jeremy Cai. <br /> 2024.01</p>
+        <p className="text-xs leading-[18px]">
           Barnes was born in Livingston, Alabama in 1895 and attended both the
           Art Institute of Chicago and Columbia University.
         </p>
