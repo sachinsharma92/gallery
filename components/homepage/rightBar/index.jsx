@@ -31,6 +31,8 @@ const RightBar = () => {
               </li>
             </ul>
           </div>
+
+          <p className="mt-4">I commission artists to recreate memories and canon events from my childhood.</p>
         </div>
 
         <div className="text-right sm:hidden">

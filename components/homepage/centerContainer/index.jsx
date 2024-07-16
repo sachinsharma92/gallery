@@ -6,6 +6,7 @@ import "swiper/css";
 
 // import required modules
 import { Autoplay } from "swiper/modules";
+import Video from "@/components/ui/videoCustom";
 
 const CenterContainer = ({ clickHandler, isFullScreen }) => {
   return (
@@ -29,7 +30,15 @@ const CenterContainer = ({ clickHandler, isFullScreen }) => {
           }}
         >
           <SwiperSlide>
-            {" "}
+            <Video
+              src="/images/naruto.mp4"
+              width={2560}
+              height={1068}
+              alt="bannerImg"
+              className="center-image"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
             <ImageCustom
               src="/images/3d-bg.jpg"
               width={2560}
@@ -39,27 +48,6 @@ const CenterContainer = ({ clickHandler, isFullScreen }) => {
             />
           </SwiperSlide>
           <SwiperSlide>
-            {" "}
-            <ImageCustom
-              src="/images/3d-bg.jpg"
-              width={2560}
-              height={1068}
-              alt="bannerImg"
-              className="center-image"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            {" "}
-            <ImageCustom
-              src="/images/3d-bg.jpg"
-              width={2560}
-              height={1068}
-              alt="bannerImg"
-              className="center-image"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            {" "}
             <ImageCustom
               src="/images/3d-bg.jpg"
               width={2560}
