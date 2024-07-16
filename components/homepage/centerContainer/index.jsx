@@ -1,11 +1,12 @@
 import { ImageCustom } from "@/components/ui/imageCustom";
 import { IoIosExpand, IoMdClose } from "react-icons/io";
 import { Swiper, SwiperSlide } from "swiper/react";
+// Import Swiper styles
 import "swiper/css";
-import "swiper/css/autoplay"; // Import autoplay styles
+import "swiper/css/pagination";
 
-// Import required modules
-import { Autoplay } from "swiper/modules";
+// import required modules
+import { Autoplay, Pagination } from "swiper/modules";
 
 const CenterContainer = ({ clickHandler, isFullScreen }) => {
   return (
@@ -19,17 +20,17 @@ const CenterContainer = ({ clickHandler, isFullScreen }) => {
 
       <div className="swiper-center-slider">
         <Swiper
-          spaceBetween={50}
-          slidesPerView={1}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
-          className="mySwiper"
+          direction={"vertical"}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Pagination, Autoplay]}
           autoplay={{
             delay: 3000,
           }}
-          modules={[Autoplay]}
         >
           <SwiperSlide>
+            {" "}
             <ImageCustom
               src="/images/3d-bg.jpg"
               width={2560}
@@ -39,6 +40,7 @@ const CenterContainer = ({ clickHandler, isFullScreen }) => {
             />
           </SwiperSlide>
           <SwiperSlide>
+            {" "}
             <ImageCustom
               src="/images/3d-bg.jpg"
               width={2560}
@@ -48,6 +50,7 @@ const CenterContainer = ({ clickHandler, isFullScreen }) => {
             />
           </SwiperSlide>
           <SwiperSlide>
+            {" "}
             <ImageCustom
               src="/images/3d-bg.jpg"
               width={2560}
@@ -57,6 +60,7 @@ const CenterContainer = ({ clickHandler, isFullScreen }) => {
             />
           </SwiperSlide>
           <SwiperSlide>
+            {" "}
             <ImageCustom
               src="/images/3d-bg.jpg"
               width={2560}
