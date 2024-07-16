@@ -2,16 +2,28 @@
 import CenterContainer from "@/components/homepage/centerContainer";
 import LeftBar from "@/components/homepage/leftBar";
 import RightBar from "@/components/homepage/rightBar";
-import { useEffect, useRef, useState } from "react";
-import cx from "classnames";
 import { ThemeContext } from "@/store/ThemeProvider";
+import { useEffect, useRef, useState } from "react";
 
 export default function HomePage() {
   const refMainComponent = useRef(null);
   const [isFullScreen, setFullScreen] = useState(false);
-  const [theme, setTheme] = useState(
-    window.matchMedia("(prefers-color-scheme:dark)").matches ? "dark" : ""
-  );
+  const [theme, setTheme] = useState("");
+
+  useEffect(() => {
+    const currentTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "";
+    setTheme(currentTheme);
+    
+    const handleMediaChange = ({ matches }) => {
+      setTheme(matches ? "dark" : "");
+    };
+
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", handleMediaChange);
+
+    return () => {
+      window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", handleMediaChange);
+    };
+  }, []);
 
   const fullScreenToggle = () => {
     const screenControl = refMainComponent.current;
@@ -50,17 +62,6 @@ export default function HomePage() {
     };
   }, []);
 
-  useEffect(() => {
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", ({ matches }) => {
-        if (matches) {
-          setTheme("dark");
-        } else {
-          setTheme("");
-        }
-      });
-  }, []);
   return (
     <ThemeContext.Provider value={theme}>
       <section
