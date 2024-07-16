@@ -4,10 +4,14 @@ import LeftBar from "@/components/homepage/leftBar";
 import RightBar from "@/components/homepage/rightBar";
 import { useEffect, useRef, useState } from "react";
 import cx from "classnames";
+import { ThemeContext } from "@/store/ThemeProvider";
 
 export default function HomePage() {
   const refMainComponent = useRef(null);
   const [isFullScreen, setFullScreen] = useState(false);
+  const [theme, setTheme] = useState(
+    window.matchMedia("(prefers-color-scheme:dark)").matches ? "dark" : ""
+  );
 
   const fullScreenToggle = () => {
     const screenControl = refMainComponent.current;
@@ -58,15 +62,20 @@ export default function HomePage() {
       });
   }, []);
   return (
-    <section
-      className={cx("homepage-layout", {
-        'fullscreen-active': isFullScreen,
-      })}
-      ref={refMainComponent}
-    >
-      {!isFullScreen && <RightBar />}
-      <CenterContainer isFullScreen={isFullScreen} clickHandler={fullScreenToggle} />
-      {!isFullScreen && <LeftBar />}
-    </section>
+    <ThemeContext.Provider value={theme}>
+      <section
+        className={`homepage-layout ${theme} ${
+          isFullScreen && "fullscreen-active"
+        }`}
+        ref={refMainComponent}
+      >
+        {!isFullScreen && <RightBar />}
+        <CenterContainer
+          isFullScreen={isFullScreen}
+          clickHandler={fullScreenToggle}
+        />
+        {!isFullScreen && <LeftBar setTheme={setTheme} />}
+      </section>
+    </ThemeContext.Provider>
   );
 }

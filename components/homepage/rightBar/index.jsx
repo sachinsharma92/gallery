@@ -6,7 +6,7 @@ const RightBar = () => {
     "2024.04 Southern Islands - Keiko Fukuyama",
   ];
   return (
-    <section className="p-6 flex justify-between flex-col">
+    <section className="p-6 flex justify-between flex-col dark:text-white">
       <div className="grid grid-cols-2 sm:grid-cols-1 justify-between">
         <div>
           <h4 className="text-xs">Jeremy Cai</h4>

@@ -19,7 +19,6 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
   background: var(--background);
   min-height: 100vh;
   font-size: 10px;
@@ -37,6 +36,11 @@ body {
   display: grid;
   grid-template-columns: 250px auto 250px;
   grid-auto-rows: minmax(100vh, auto);
+  background: var(--background);
+
+  &.dark {
+    background: rgb(var(--foreground-rgb));
+  }
 
   @media only screen and (max-width: 767px) {
     grid-template-columns: 100%;
@@ -98,8 +102,21 @@ body {
   }
 }
 
-.social-sec {
+.dark {
+  .collection-list-style {
+    li {
+      &::before {
+        background-color: white;
+        height: 0.125rem;
+        width: 1rem;
+        display: block;
+        content: "";
+      }
+    }
+  }
+}
 
+.social-sec {
   li {
     line-height: 20px;
   }
