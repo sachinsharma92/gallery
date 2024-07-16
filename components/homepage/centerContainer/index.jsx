@@ -3,10 +3,9 @@ import { IoIosExpand, IoMdClose } from "react-icons/io";
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/pagination";
 
 // import required modules
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 
 const CenterContainer = ({ clickHandler, isFullScreen }) => {
   return (
@@ -24,7 +23,7 @@ const CenterContainer = ({ clickHandler, isFullScreen }) => {
           pagination={{
             clickable: true,
           }}
-          modules={[Pagination, Autoplay]}
+          modules={[Autoplay]}
           autoplay={{
             delay: 3000,
           }}
