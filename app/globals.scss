@@ -121,3 +121,9 @@ body {
     line-height: 20px;
   }
 }
+
+.swiper-center-slider {
+  .swiper-slide {
+    width: 100% !important;
+  }
+}
