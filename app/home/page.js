@@ -70,12 +70,12 @@ export default function HomePage() {
         }`}
         ref={refMainComponent}
       >
-        {!isFullScreen && <RightBar />}
+        {!isFullScreen && <LeftBar setTheme={setTheme} />}
         <CenterContainer
           isFullScreen={isFullScreen}
           clickHandler={fullScreenToggle}
         />
-        {!isFullScreen && <LeftBar setTheme={setTheme} />}
+        {!isFullScreen && <RightBar />}
       </section>
     </ThemeContext.Provider>
   );

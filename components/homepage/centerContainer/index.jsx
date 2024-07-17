@@ -1,57 +1,36 @@
 import { ImageCustom } from "@/components/ui/imageCustom";
-import { IoIosExpand, IoMdClose } from "react-icons/io";
-import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
 import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Mousewheel } from "swiper/modules";
 
-// import required modules
-import { Autoplay } from "swiper/modules";
-
-const CenterContainer = ({ clickHandler, isFullScreen }) => {
+const CenterContainer = () => {
   return (
     <div className="relative min-h-full">
-      <button
-        className="w-8 sm:w-11 h-8 sm:h-11 bg-white border absolute right-2 sm:right-5 top-2 sm:top-5 z-10 flex justify-center items-center"
-        onClick={clickHandler}
-      >
-        {!isFullScreen ? <IoIosExpand size={20} /> : <IoMdClose size={20} />}
-      </button>
-
       <div className="swiper-center-slider">
-        <Swiper
-          direction={"vertical"}
-          pagination={{
-            clickable: true,
-          }}
-          modules={[Autoplay]}
-          autoplay={{
-            delay: 3000,
-          }}
-        >
-          <SwiperSlide>
-            <video playsInline loop muted autoPlay width="100%">
-              <source src="/images/naruto.mp4" type="video/mp4" />
-            </video>
-          </SwiperSlide>
-          <SwiperSlide>
-            <ImageCustom
-              src="/images/3d-bg.jpg"
-              width={2560}
-              height={1068}
-              alt="bannerImg"
-              className="center-image"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <ImageCustom
-              src="/images/3d-bg.jpg"
-              width={2560}
-              height={1068}
-              alt="bannerImg"
-              className="center-image"
-            />
-          </SwiperSlide>
-        </Swiper>
+        <div className="slide-item">
+          <video playsInline loop muted autoPlay width="100%">
+            <source src="/images/naruto.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        <div className="slide-item">
+          <ImageCustom
+            src="/images/3d-bg.jpg"
+            width={2560}
+            height={1068}
+            alt="bannerImg"
+            className="center-image"
+          />
+        </div>
+        <div className="slide-item">
+          <ImageCustom
+            src="/images/3d-bg.jpg"
+            width={2560}
+            height={1068}
+            alt="bannerImg"
+            className="center-image"
+          />
+        </div>
       </div>
     </div>
   );
