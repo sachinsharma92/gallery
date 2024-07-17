@@ -24,7 +24,7 @@ const CenterContainer = () => {
         </div>
         <div className="slide-item">
           <ImageCustom
-            src="/images/3d-bg.jpg"
+            src="/images/3d-bg1.jpg"
             width={2560}
             height={1068}
             alt="bannerImg"
