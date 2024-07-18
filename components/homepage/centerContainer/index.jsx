@@ -1,7 +1,4 @@
 import { ImageCustom } from "@/components/ui/imageCustom";
-import "swiper/css";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Mousewheel } from "swiper/modules";
 
 const CenterContainer = () => {
   return (
