@@ -1,3 +1,10 @@
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+} from "@headlessui/react";
+import { GoChevronDown, GoChevronUp } from "react-icons/go";
+
 const LeftBar = () => {
   const collection = [
     "2024.04 Southern Islands - Keiko Fukuyama",
@@ -13,9 +20,16 @@ const LeftBar = () => {
           <p className="my-4">Current: Buenos Aires.</p>
           <div className="flex flex-col gap-4">
             <ul>
-              <li>CEO: <span className="underline">Italic.</span></li>
-              <li>Founder: <span className="underline">Fountain, Blemish, Courtly.</span></li>
-              <li>Owner: <span className="underline">Tonari, Carbon.</span></li>
+              <li>
+                CEO: <span className="underline">Italic.</span>
+              </li>
+              <li>
+                Founder:{" "}
+                <span className="underline">Fountain, Blemish, Courtly.</span>
+              </li>
+              <li>
+                Owner: <span className="underline">Tonari, Carbon.</span>
+              </li>
               <li>
                 &gt;$250M raised, &gt;$200M sales. <br />
                 2015 Thiel Fellow, YC S15.
@@ -24,15 +38,27 @@ const LeftBar = () => {
 
             <ul>
               <li>Investor in ~130 startups & funds.</li>
-              <li>Select LP: <span className="underline">Dragonfly, Patron, Treble, 776.</span></li>
               <li>
-                Select Direct:<span className="underline"> Ramp, Notion, Settle, Backbone, Patch, Pipe,
-                Dandelion, Opal, Slope, Olipop, Knot.</span>
+                Select LP:{" "}
+                <span className="underline">
+                  Dragonfly, Patron, Treble, 776.
+                </span>
+              </li>
+              <li>
+                Select Direct:
+                <span className="underline">
+                  {" "}
+                  Ramp, Notion, Settle, Backbone, Patch, Pipe, Dandelion, Opal,
+                  Slope, Olipop, Knot.
+                </span>
               </li>
             </ul>
           </div>
 
-          <p className="mt-4">I commission artists to recreate memories and canon events from my childhood.</p>
+          <p className="mt-4">
+            I commission artists to recreate memories and canon events from my
+            childhood.
+          </p>
         </div>
 
         <div className="text-right sm:hidden">
@@ -55,31 +81,40 @@ const LeftBar = () => {
 
       <div className="collection-list flex-col gap-4 hidden sm:flex">
         <h4 className="text-xs">Collection</h4>
-        <div>
-          <div className="flex flex-col gap-4">
-            <div>
-              <h5>2024</h5>
-              <ul className="collection-list-style">
-                {collection.map((item, index) => (
-                  <li key={index}><span className="line-clamp-1">{item}</span></li>
-                ))}
-              </ul>
-            </div>
 
-            <div>
-              <h5>2023</h5>
-              <ul className="collection-list-style">
-                {collection.map((item, index) => (
-                  <li key={index} className="opacity-30"><span className="line-clamp-1">{item}</span></li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
+        <Disclosure as="div" defaultOpen={true}>
+          <DisclosureButton className="group flex w-full items-center justify-between">
+            <h5>2024</h5>
+            {/* <GoChevronUp className="size-5 group-data-[open]:rotate-180" /> */}
+          </DisclosureButton>
+          <DisclosurePanel className="mt-2 text-sm/5">
+            <ul className="collection-list-style">
+              {collection.map((item, index) => (
+                <li key={index}>
+                  <span className="line-clamp-1">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </DisclosurePanel>
+        </Disclosure>
+        <Disclosure as="div">
+          <DisclosureButton className="group flex w-full items-center justify-between">
+            <h5>2023</h5>
+            {/* <GoChevronUp className="size-5 group-data-[open]:rotate-180" /> */}
+          </DisclosureButton>
+          <DisclosurePanel className="mt-2 text-sm/5">
+            <ul className="collection-list-style">
+              {collection.map((item, index) => (
+                <li key={index} className="opacity-30">
+                  <span className="line-clamp-1">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </DisclosurePanel>
+        </Disclosure>
       </div>
     </section>
   );
 };
 
 export default LeftBar;
-
