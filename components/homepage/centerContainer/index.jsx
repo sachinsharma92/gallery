@@ -1,10 +1,87 @@
 import { ImageCustom } from "@/components/ui/imageCustom";
 
-const CenterContainer = () => {
+const CenterContainer = ({ selectedData }) => {
+  function checkFileType(fileName) {
+    const imageExtensions = [
+      ".jpg",
+      ".jpeg",
+      ".png",
+      ".gif",
+      ".bmp",
+      ".tiff",
+      ".svg",
+      ".webp",
+    ];
+    const videoExtensions = [
+      ".mp4",
+      ".mov",
+      ".wmv",
+      ".flv",
+      ".avi",
+      ".mkv",
+      ".webm",
+      ".mpeg",
+    ];
+    const extension = fileName.slice(fileName.lastIndexOf(".")).toLowerCase();
+    if (imageExtensions.includes(extension)) {
+      return "image";
+    } else if (videoExtensions.includes(extension)) {
+      return "video";
+    } else {
+      return "unknown";
+    }
+  }
+
+  const getMediaElement = (asset) => {
+    const fileType = checkFileType(asset.name);
+    switch (fileType) {
+      case "image":
+        return (
+          <ImageCustom
+            src={asset.file.url}
+            width={2560}
+            height={1068}
+            alt="bannerImg"
+            className="center-image"
+          />
+        );
+      case "video":
+        return (
+          <video playsInline loop muted autoPlay width="100%">
+            <source src={asset.file.url} />
+          </video>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="relative min-h-full">
       <div className="swiper-center-slider">
-        <div className="slide-item">
+        {selectedData &&
+          selectedData.Asset &&
+          selectedData.Asset.map((asset) => {
+            if (asset.type == "file") {
+              return (
+                <div key={asset} className="slide-item">
+                  {getMediaElement(asset)}
+                </div>
+              );
+            } else {
+              return (
+                <iframe
+                  key={asset}
+                  width="100%"
+                  height="100%"
+                  src={asset.external.url}
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                ></iframe>
+              );
+            }
+          })}
+        {/* <div className="slide-item">
           <video playsInline loop muted autoPlay width="100%">
             <source src="/images/naruto.mp4" type="video/mp4" />
           </video>
@@ -27,7 +104,7 @@ const CenterContainer = () => {
             alt="bannerImg"
             className="center-image"
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

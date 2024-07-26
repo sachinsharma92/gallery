@@ -1,4 +1,4 @@
-const RightBar = ({ setTheme }) => {
+const RightBar = ({ setTheme, selectedData }) => {
   return (
     <section className="p-6 flex justify-between flex-col dark:text-white">
       <div className="text-right hidden sm:block">
@@ -30,15 +30,15 @@ const RightBar = ({ setTheme }) => {
 
       <div>
         <p className="text-[13px] leading-[19.5px]">
-          Keiko Fukuyama <br />
-          <span className="italic">Southern islands,</span> 2000
+          {selectedData.Artist} <br />
+          <span className="italic">{selectedData.Name},</span>{" "}
+          {selectedData["Year Created"]}
         </p>
         <p className="my-4">
-          Commissioned by Jeremy Cai. <br /> 2024.01
+          {selectedData.Subtitle} <br /> {selectedData["Year Tag"]}
         </p>
         <p className="text-[13px] leading-[19.5px]">
-          Barnes was born in Livingston, Alabama in 1895 and attended both the
-          Art Institute of Chicago and Columbia University.
+          {selectedData.Description}
         </p>
       </div>
     </section>

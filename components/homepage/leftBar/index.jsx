@@ -5,13 +5,13 @@ import {
 } from "@headlessui/react";
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
 
-const LeftBar = () => {
-  const collection = [
-    "2024.04 Southern Islands - Keiko Fukuyama",
-    "2024.04 Southern Islands - Keiko Fukuyama",
-    "2024.04 Southern Islands - Keiko Fukuyama",
-    "2024.04 Southern Islands - Keiko Fukuyama",
-  ];
+const LeftBar = ({
+  setSelectedData,
+  selectedData,
+  setSelectedYear,
+  selectedYear,
+  data,
+}) => {
   return (
     <section className="p-6 flex justify-between flex-col dark:text-white">
       <div className="grid grid-cols-2 sm:grid-cols-1 justify-between">
@@ -81,37 +81,32 @@ const LeftBar = () => {
 
       <div className="collection-list flex-col gap-4 hidden sm:flex">
         <h4 className="text-xs">Collection</h4>
-
-        <Disclosure as="div" defaultOpen={true}>
-          <DisclosureButton className="group flex w-full items-center justify-between">
-            <h5>2024</h5>
-            {/* <GoChevronUp className="size-5 group-data-[open]:rotate-180" /> */}
-          </DisclosureButton>
-          <DisclosurePanel className="mt-2 text-sm/5">
-            <ul className="collection-list-style">
-              {collection.map((item, index) => (
-                <li key={index}>
-                  <span className="line-clamp-1">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </DisclosurePanel>
-        </Disclosure>
-        <Disclosure as="div">
-          <DisclosureButton className="group flex w-full items-center justify-between">
-            <h5>2023</h5>
-            {/* <GoChevronUp className="size-5 group-data-[open]:rotate-180" /> */}
-          </DisclosureButton>
-          <DisclosurePanel className="mt-2 text-sm/5">
-            <ul className="collection-list-style">
-              {collection.map((item, index) => (
-                <li key={index} className="opacity-30">
-                  <span className="line-clamp-1">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </DisclosurePanel>
-        </Disclosure>
+        {data &&
+          Object.keys(data).map((key) => (
+            <Disclosure as="div" defaultOpen={key == selectedYear} key={key}>
+              <DisclosureButton className="group flex w-full items-center justify-between">
+                <h5>{key}</h5>
+              </DisclosureButton>
+              <DisclosurePanel className="mt-2 text-sm/5">
+                <ul className="collection-list-style">
+                  {data[key].map((item, index) => (
+                    <li
+                      key={index}
+                      onClick={() => {
+                        setSelectedYear(key);
+                        setSelectedData(item);
+                      }}
+                      className={`${
+                        item.id == selectedData.id ? "" : "opacity-30"
+                      }`}
+                    >
+                      <span className="line-clamp-1">{item.Slug}</span>
+                    </li>
+                  ))}
+                </ul>
+              </DisclosurePanel>
+            </Disclosure>
+          ))}
       </div>
     </section>
   );
