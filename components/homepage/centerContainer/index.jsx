@@ -57,7 +57,7 @@ const CenterContainer = ({ selectedData }) => {
   };
 
   return (
-    <div className="relative min-h-full">
+    <section className="relative min-h-full center-section">
       <div className="swiper-center-slider">
         {selectedData &&
           selectedData.Asset &&
@@ -70,14 +70,16 @@ const CenterContainer = ({ selectedData }) => {
               );
             } else {
               return (
-                <iframe
-                  key={asset}
-                  width="100%"
-                  height="100%"
-                  src={asset.external.url}
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                ></iframe>
+                <div key={asset} className="slide-item">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={asset.external.url}
+                    frameborder="0"
+                    className="responsive-iframe"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  ></iframe>
+                </div>
               );
             }
           })}
@@ -106,7 +108,7 @@ const CenterContainer = ({ selectedData }) => {
           />
         </div> */}
       </div>
-    </div>
+    </section>
   );
 };
 

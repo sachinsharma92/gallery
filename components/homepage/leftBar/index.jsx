@@ -13,7 +13,7 @@ const LeftBar = ({
   data,
 }) => {
   return (
-    <section className="p-6 flex justify-between flex-col dark:text-white">
+    <section className="p-6 flex justify-between flex-col dark:text-white left-bar">
       <div className="grid grid-cols-2 sm:grid-cols-1 justify-between">
         <div>
           <h4 className="text-[13px] leading-[20.8px]">Jeremy Cai</h4>

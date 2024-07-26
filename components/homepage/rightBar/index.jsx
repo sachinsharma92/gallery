@@ -1,6 +1,6 @@
 const RightBar = ({ setTheme, selectedData }) => {
   return (
-    <section className="p-6 flex justify-between flex-col dark:text-white">
+    <section className="p-6 flex justify-between flex-col dark:text-white right-bar">
       <div className="text-right hidden sm:block">
         <div className="theme-mode flex gap-1 justify-end mb-4">
           <button

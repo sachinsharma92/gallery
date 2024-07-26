@@ -15,6 +15,6 @@ export const getPages = () => {
     ":database_id",
     process.env.NEXT_PUBLIC_NOTION_DATABASE_ID
   );
-  // return Promise.resolve(ApiResponse.get_pages);
-  return axiosInstance.post(url, body);
+  return Promise.resolve(ApiResponse.get_pages);
+  // return axiosInstance.post(url, body);
 };

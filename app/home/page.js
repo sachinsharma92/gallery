@@ -128,7 +128,7 @@ export default function HomePage() {
 
   return (
     <ThemeContext.Provider value={theme}>
-      <section
+      <main
         className={`homepage-layout ${theme} ${
           isFullScreen && "fullscreen-active"
         }`}
@@ -151,7 +151,7 @@ export default function HomePage() {
         {!isFullScreen && (
           <RightBar setTheme={setTheme} selectedData={selectedData} />
         )}
-      </section>
+      </main>
     </ThemeContext.Provider>
   );
 }
