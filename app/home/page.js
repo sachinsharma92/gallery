@@ -4,6 +4,7 @@ import LeftBar from "@/components/homepage/leftBar";
 import RightBar from "@/components/homepage/rightBar";
 import { getPages } from "@/dataManager/Notion";
 import { ThemeContext } from "@/store/ThemeProvider";
+import { Client } from "@notionhq/client";
 import { useEffect, useRef, useState } from "react";
 
 export default function HomePage() {
@@ -74,7 +75,7 @@ export default function HomePage() {
 
   function transformData(rawData) {
     const transformedData = {};
-    rawData.data.results.forEach((item) => {
+    rawData.results.forEach((item) => {
       const year = item.properties["Year Created"]?.number || "";
       const id = item.id;
       const description =
@@ -117,12 +118,30 @@ export default function HomePage() {
   }
 
   useEffect(() => {
-    getPages()
-      .then((res) => {
-        transformData(res);
+    // getPages()
+    //   .then((res) => {
+    //     transformData(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    console.log(process.env.NEXT_PUBLIC_NOTION_SECRET, "checkkkk");
+
+    const notion = new Client({
+      auth: process.env.NEXT_PUBLIC_NOTION_SECRET,
+    });
+   notion.databases
+      .query({
+        database_id: process.env.NEXT_PUBLIC_NOTION_DATABASE_ID,
+        filter: {
+          property: "Status",
+          status: {
+            equals: "Done",
+          },
+        },
       })
-      .catch((err) => {
-        console.log(err);
+      .then((res) => {
+        console.log(res);
       });
   }, []);
 
